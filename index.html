@@ -7,14 +7,35 @@
 			margin: 0;
 			padding: 0;
 			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
 		}
 
 		.header {
 			display: flex;
-			justify-content: flex-end;
+			align-items: center;
+			justify-content: space-between;
 			padding: 20px;
 			background-color: #333;
 			color: #fff;
+		}
+
+		.logo {
+			display: flex;
+			align-items: center;
+		}
+
+		.logo img {
+			height: 50px;
+			margin-right: 10px;
+		}
+
+		.logo h1 {
+			margin: 0;
+			font-size: 24px;
+			font-weight: bold;
+			color: #fff;
+			text-transform: uppercase;
+			letter-spacing: 1px;
 		}
 
 		.header a {
@@ -27,42 +48,173 @@
 			letter-spacing: 1px;
 		}
 
-		.home {
-			padding-top: 100px;
+		.section {
+			padding: 100px 0;
 			height: 500px;
-			background-color: #f2f2f2;
+			background-color: transparent;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+			position: relative;
+		}
+
+		.section:before {
+			content: attr(data-syntax);
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			font-size: 14px;
+			font-weight: bold;
+			color: #fff;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			z-index: 1;
+		}
+
+		/* .home {
+			background-image: url('home-watermark.jpg');
 		}
 
 		.test {
-			padding-top: 100px;
-			height: 500px;
-			background-color: #d9d9d9;
-		}
+			background-image: url('test-watermark.jpg');
+			background-color: #b3e5fc;
+		} */
 
 		.about {
-			padding-top: 100px;
-			height: 500px;
-			background-color: #bfbfbf;
+			/*background-image: url('about-watermark.jpg');*/
+			background-color: #333;
 		}
-	</style>
+
+		.image-upload {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 300px;
+			width: 300px;
+			border: 2px dashed #ccc;
+			margin: 0 auto;
+			background-color: #fff;
+			color: #ccc;
+			font-size: 18px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		.image-upload input {
+			display: none;
+		}
+
+		.form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin-top: 50px;
+		}
+
+		.form label {
+			font-size: 18px;
+			font-weight: bold;
+			margin-bottom: 10px;
+			text-align: center;
+			width: 100%;
+		}
+
+		.form input {
+			height: 30px;
+			width: 100%;
+			margin-bottom: 20px;
+			padding: 0;
+        }
+
+        .submit {
+			/*background-image: url('about-watermark.jpg');*/
+			background-color: #333;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 20px;
+		}
+
+.form input[type="text"] {
+    font-size: 16px;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+}
+
+.form select {
+    height: 30px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+}
+
+.form button {
+    height: 40px;
+    width: 150px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.form button:hover {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
+    transition: all 0.3s ease-in-out;
+}
+</style>
 </head>
 <body>
-	<header class="header">
-		<a href="#home" class="btn">Home</a>
-		<a href="#test" class="btn">Test</a>
-		<a href="#about" class="btn">About Us</a>
-	</header>
-
-	<section id="home" class="home">
-		<!-- Home content goes here -->
-	</section>
-
-	<section id="test" class="test">
-		<!-- Test content goes here -->
-	</section>
-
-	<section id="about" class="about">
-		<!-- About Us content goes here -->
-	</section>
-</body>
-</html>
+<header class="header">
+<div class="logo">
+    <img src="logo.png" alt="Logo">
+    <h1>My Webpage</h1>
+</div>
+<nav>
+    <a href="#home">Home</a>
+    <a href="#test">Test</a>
+    <a href="#about">About Us</a>
+</nav>
+</header>
+<section id="home" class="section home" data-syntax="&lt;section id=&quot;home&quot;&gt;">
+<!-- Content for Home section goes here -->
+</section>
+<section id="test" class="section test" data-syntax="&lt;section id=&quot;test&quot;&gt;">
+<div class="image-upload">
+    <input type="file" id="file-input">
+    <p>Drag and drop your image here, or click to select a file.</p>
+</div>
+<div class="form">
+    <label for="patient-name">Patient Name</label>
+    <input type="text" id="patient-name" placeholder="Enter patient name...">
+    <label for="dialog-box">Dialog Box (Left or Right Eye)</label>
+    <select id="dialog-box">
+        <option value="left">Left Eye</option>
+        <option value="right">Right Eye</option>
+    </select>
+    <label for="age">Age</label>
+    <input type="text" id="age" placeholder="Enter patient age...">
+    <button id="test-btn">Test</button>
+</div>
+<nav>
+    <a href="#submit">Submit</a>
+</nav>
+</section>
+<section id="about" class="section about" data-syntax="&lt;section id=&quot;about&quot;&gt;">
+<!-- Content for About Us section goes here -->
+</section>
